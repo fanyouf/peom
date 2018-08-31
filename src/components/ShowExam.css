@@ -1,0 +1,12 @@
+.itemWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item {
+  width: 5rem;
+  height: 2rem;
+}
+.item:empty {
+  border: 2px dashed #ccc;
+}
