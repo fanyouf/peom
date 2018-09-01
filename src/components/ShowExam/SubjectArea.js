@@ -1,54 +1,55 @@
 import React, { Component } from 'react';
-import { Button } from 'antd-mobile';
+import { Button, Toast } from 'antd-mobile';
 import './ShowExam.less';
-class ShowExam extends Component {
+class SubjectArea extends Component {
     constructor(props) {
         super(props);
         this.state = {
             editable:false
         }
     }
-    click(str){
-        this.setState({
-            editable:true
-        })
+    hClick(str){
+        // this.setState({
+        //     editable:true
+        // })
         if(this.refs.empty){
             console.info(this.refs.empty)
             this.refs.empty.innerHTML = str
         }
             
         if(str === this.props.subject.anser){
-            alert("ok")
+            Toast.success('回答正确', 2,()=>{
+                this.refs.empty.innerHTML = ""
+                this.props.getNext();
+                
+            });
         }
         else{
-            alert("wrong")
+            Toast.fail('回答失败', 2,()=>{
+                this.refs.empty.innerHTML = ""
+                this.props.getNext();
+            });
         }
-        
     }
     render() {
-        let {title,author,ansArr,subjectArr}  = this.props.subject
+        let {title,author,subjectArr}  = this.props.subject
         console.info(this.props.subject)
         return (
             <div>
                 <h2>{title}</h2>  
                 <p>{author}</p>
                 <section className="itemWrap">
-                    {subjectArr && subjectArr.map(item=>{
+                    {subjectArr && subjectArr.map((item,index)=>{
                         console.info(item)
                         if(item.toString().trim() === "")
-                            return <div ref="empty" className="item">{item}</div>
+                            return <div key={index} ref="empty" className="item"></div>
                         else
-                            return <div className="item">{item}</div>
+                            return <div key={index} className="item">{item}</div>
                     })}
                 </section>
-                
-                    {ansArr && ansArr.map(item=>{
-                        return <Button inline disabled={this.state.editable} onClick={this.click.bind(this,item)} >{item}</Button>
-                    })}
-                
             </div>
         );
     }
 }
 
-export default ShowExam;
+export default SubjectArea;

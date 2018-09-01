@@ -4,7 +4,8 @@ import './App.less';
 import 'antd-mobile/dist/antd-mobile.css';
 import { Button } from 'antd-mobile';
 import { getPeom } from "./api/api"
-import ShowExam from "./components/ShowExam"
+import ShowExam from "./components/ShowExam/ShowExam"
+import { runInThisContext } from 'vm';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +49,7 @@ class App extends Component {
   createSubject(rs){
     let totalSubjectNum = Math.floor(rs.length / 4);
     let subjects = []
-    for(var i = 0;i<totalSubjectNum;i+=5){
+    for(var i = 0;i<totalSubjectNum;i++){
       let obj = {}
       obj.title = rs[i].title;
       obj.author = rs[i].author;
@@ -58,6 +59,25 @@ class App extends Component {
       subjects.push(obj)
     }
     return subjects;
+  }
+
+  getNext(){
+    let currentIndex = this.state.currentIndex
+    if(currentIndex < this.state.subjectList.length){
+      currentIndex++;
+      let subject = this.state.subjectList[currentIndex]
+      console.info(subject)
+      this.setState({
+        subject,
+        currentIndex
+      })
+      return true;
+    }
+    
+      
+  }
+  updateScore(){
+
   }
   
   
@@ -84,11 +104,19 @@ class App extends Component {
       }
     })
   }
+  click(){
+    this.setState({
+      subjectList:[1,2,3]
+    })
+  }
   render() {
+   
     return (
       <div className="App">
-        
-        <ShowExam subject={this.state.subject}></ShowExam>
+        <Button onClick={this.click.bind(this)} >change</Button>
+        <ShowExam
+          subjectList={this.state.subjectList} 
+        />
         <Button>ok</Button>
       </div>
     );
