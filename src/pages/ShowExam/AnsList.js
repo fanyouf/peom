@@ -9,8 +9,8 @@ class AnsList extends Component {
     render() {
         let ansArr = this.props.subject.ansArr;
         return (
-            <div>
-                <section>
+            <div >
+                <section className="ansList">
                     {ansArr && ansArr.map((item,index)=>{
                         return <Button key={index} onClick={this.props.setAns.bind(this,item)} >{item}</Button>
                     })}

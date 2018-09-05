@@ -18,11 +18,12 @@ function sleep(){
     }
 }
 function getPeom(){
-    // return fetch('');
-    return new Promise((resolve,reject)=>{
-        sleep()
+    let url = "http://www.fanyoufu.com/getPros.php"
+    return fetch(url).then(rs=>rs.json());
+    // return new Promise((resolve,reject)=>{
+    //     sleep()
         
-        resolve(dataList)
-    })
+    //     resolve(dataList)
+    // })
 }
 export {getPeom}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Toast } from 'antd-mobile';
+import {Toast } from 'antd-mobile';
 import './ShowExam.less';
 class SubjectArea extends Component {
     constructor(props) {
@@ -35,12 +35,11 @@ class SubjectArea extends Component {
         let {title,author,subjectArr}  = this.props.subject
         console.info(this.props.subject)
         return (
-            <div>
+            <div className="subjectArea">
                 <h2>{title}</h2>  
                 <p>{author}</p>
                 <section className="itemWrap">
                     {subjectArr && subjectArr.map((item,index)=>{
-                        console.info(item)
                         if(item.toString().trim() === "")
                             return <div key={index} ref="empty" className="item"></div>
                         else

@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  height: 3rem;
+  position: fixed;
+  bottom: 0;
+  justify-content: space-around;
+  align-items: center;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+.nav a {
+  flex: 1 1  auto;
+  display: block;
+  border-right: 1px solid #ccc;
+}
+.nav a:last-child {
+  border-right: none;
+}
+.nav a.current {
+  color: red;
+}
