@@ -20,10 +20,10 @@ function sleep(){
 function getPeom(){
     let url = "http://www.fanyoufu.com/getPros.php"
     return fetch(url).then(rs=>rs.json());
-    // return new Promise((resolve,reject)=>{
-    //     sleep()
-        
-    //     resolve(dataList)
-    // })
 }
-export {getPeom}
+function getAuthor(){
+    let url = "http://www.fanyoufu.com/getAuthor.php"
+    return fetch(url).then(rs=>rs.json());
+}
+
+export {getPeom,getAuthor}

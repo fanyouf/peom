@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import { browserHistory } from 'react-router-dom';
-
-
+import {Popover} from 'antd-mobile'
 import "./BottomMenuLink.less";
+const Item = Popover.Item
 class BottomMenuLink extends Component {
     constructor(props){
         super();
@@ -19,6 +19,7 @@ class BottomMenuLink extends Component {
     render() {
         console.info(this.state.currentLink)
         return (
+            <div>
             <nav className='nav'>
              {this.props.links.map((item,index)=>{
                     return <Link
@@ -26,8 +27,7 @@ class BottomMenuLink extends Component {
                     onClick={this.changeLink.bind(this,item.href)} key={index} to={item.href}>{item.txt}</Link>
                 })}
             </nav>
- 
-            
+            </div>
         );
     }
 }

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import Storage from '../../utils/LocalStorage'
 
-function mapStateToProps(state) {
-    return {
-
-    };
-}
 
 class Home extends Component {
     render() {
+        console.info("asfsadf")
+        var s = new Storage()
+
+        s.set("abc",1)
         return (
             <div>
                 HOME

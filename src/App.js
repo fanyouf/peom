@@ -10,20 +10,21 @@ import BottomMenuLink from "./components/BottomMenuLink";
 import { runInThisContext } from 'vm';
 class App extends Component {
   constructor(props) {
+
     super(props);
   
   }
-  
+
   render() {
     return (
       <div className="App">
       <Route path="/setting" component={Setting}></Route>
       <Route path="/exam" component={Exam}></Route>
+      <Route path="/home" component={Home}></Route>
 
       
       <BottomMenuLink
-      links={[{txt:"主页",href:'/home'},{txt:"测验",href:'/exam'},,{txt:"设置",href:'/setting'}]}></BottomMenuLink>
-        
+      links={[{txt:"主页",href:'/home'},{txt:"测验",href:'/exam'},,{txt:"设置",href:'/setting'}]}></BottomMenuLink> 
       </div>
     );
   }

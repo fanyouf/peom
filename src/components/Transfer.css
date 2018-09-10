@@ -1,0 +1,7 @@
+.wrapper {
+  display: flex;
+}
+.wrapper .sourceWrapper,
+.wrapper .targetWrapper {
+  border: 1px solid #ccc;
+}
